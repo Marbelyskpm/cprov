@@ -11,7 +11,22 @@
 |
 */
 
+/*
 
+Clonar el sistema en una nueva computadora:
+	 git clone "Ruta del repositorio" 
+Visualizar los Cambios:
+	 git status
+Agregar archivos nuevos:
+	 git add -A
+Darle nombre a los cambios:
+	 git commit -am "Nombre de los cambios realizados"
+Subir los cambios:
+	 git push origin master
+Descargar los cambios:
+	 git pull
+
+*/
 
 if(Auth::check() && Auth::user()->tipo=='administrador'):
 	Route::controller('/auth','AuthController');
