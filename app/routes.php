@@ -38,6 +38,7 @@ if(Auth::check() && Auth::user()->tipo=='administrador'):
 	Route::controller('/servicios', 'ServicioController');
 	Route::controller('/actividades', 'ActividadController');
 	Route::controller('/tipoempresas', 'TipoEmpresaController');
+	Route::controller('/ajax', 'AjaxController');
 elseif(Auth::check()):
 	Route::controller('/auth','AuthController');
 	Route::controller('/empresas', 'EmpresaController');
@@ -47,6 +48,7 @@ elseif(Auth::check()):
 	Route::controller('/servicios', 'ServicioController');
 	Route::controller('/actividades', 'ActividadController');
 	Route::controller('/tipoempresas', 'TipoEmpresaController');
+	Route::controller('/ajax', 'AjaxController');
 endif;
 	Route::controller('/auth','AuthController');
 /*

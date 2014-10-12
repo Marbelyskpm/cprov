@@ -10,7 +10,8 @@
         </div>
         <!-- DataTables Example -->
         <div class="row">
-          <div class="col-lg-12">
+          </div>
+          <div class="col-sm-12">
             <div class="widget-container fluid-height clearfix">
               <div class="heading">
                 <a href="{{ $route }}/create"><i class="icon-user"></i>Añadir Nueva Empresa</a>
@@ -101,14 +102,13 @@
                         {{ $empresa->nombre }}
                       </td>
                       <td class="hidden-xs">
-                        {{ $empresa->id_persona }}
+                        {{ $empresa->representante->nombre }}
                       </td>
                       <td class="hidden-xs">
                         {{ $empresa->direccion }}
                       </td>
-                      <td class="hidden-xs">
-                        {{ $empresa->rif }}
-                      </td>
+                      
+                      
                       <td class="hidden-xs">
                         {{ $empresa->telefono }}
                       </td>
@@ -132,6 +132,7 @@
               </div>
             </div>
           </div>
+          
         </div>
         <!-- end DataTables Example -->
         @stop

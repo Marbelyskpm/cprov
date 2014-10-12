@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Creación de formulario Empresa
+            Creación de Tipo Empresa
           </h1>
         </div>
         <!-- DataTables Example -->
@@ -19,12 +19,21 @@
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
 		          <div class="form-group">
-			            <label class="control-label col-md-7">¿Usted está seguro que desea eliminar a {{ $empresa->nombre }} con el codigo {{ $empresa->codigo }}?</label>
-			            <div class="col-md-2">
-			              	<input class="form-control" placeholder="" value="Si, estoy seguro" type="submit" style="display:inline-block">
+			            <label class="control-label col-md-2">Tipo de Empresa</label>
+			            <div class="col-md-7">
+			              <input class="form-control" placeholder="Escriba el tipo de empresa" name="descripcion" type="text"/>
 			            </div>
-			            <div class="col-md-2">
-                			<a href="{{ $route }}" class="form-control"  style="display:inline-block;text-align:center">No, ir Atrás</a>
+			        </div>
+              <div class="form-group">
+                  <label class="control-label col-md-2">Prefijo</label>
+                  <div class="col-md-7">
+                    <input class="form-control" placeholder="Escriba el tipo de empresa" name="prefijo" type="text" maxlength="1" />
+                  </div>
+              </div>
+					<div class="form-group">
+			            <label class="control-label col-md-2"></label>
+			            <div class="col-md-7">
+			              <input class="form-control" placeholder="" value="Enviar" type="submit">
 			            </div>
 			        </div>
 		        </form>

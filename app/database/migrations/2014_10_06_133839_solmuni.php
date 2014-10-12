@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TipoDeEmpresa extends Migration {
+class Solmuni extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,13 @@ class TipoDeEmpresa extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tipo_empresas', function($table)
+		
+		Schema::create('solmuni', function($table)
 		{
-			$table->increments('id');
-		    $table->string('descripcion');
-		    $table->char('prefijo', 1);
+		    $table->increments('id');
+		    $table->string('id_empresa');
+            $table->string('licencia');
+            $table->date('fecha_municipal');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -29,7 +31,7 @@ class TipoDeEmpresa extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tipo_empresas');
+		Schema::drop('solmuni');
 	}
 
 }

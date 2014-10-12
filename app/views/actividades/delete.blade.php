@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Creación de formulario Empresa
+            Borrado de Actividades
           </h1>
         </div>
         <!-- DataTables Example -->
@@ -19,7 +19,7 @@
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
 		          <div class="form-group">
-			            <label class="control-label col-md-7">¿Usted está seguro que desea eliminar a {{ $empresa->nombre }} con el codigo {{ $empresa->codigo }}?</label>
+			            <label class="control-label col-md-7">¿Usted está seguro que desea eliminada esta actividad {{ $actividad->descripcion }}?</label>
 			            <div class="col-md-2">
 			              	<input class="form-control" placeholder="" value="Si, estoy seguro" type="submit" style="display:inline-block">
 			            </div>

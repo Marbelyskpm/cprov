@@ -25,6 +25,7 @@ class Empresa extends Migration {
             $table->integer('id_servicio');
             $table->integer('id_actividad');
             $table->string('rif');
+            
             $table->date('fecha_registro');
             $table->string('num_registro');
             $table->decimal('capital');

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>CProv</title>
+	 <link rel="icon" href="/images/logo.jpeg" />
 	<style>
 		@import url(//fonts.googleapis.com/css?family=Lato:700);
 
@@ -10,7 +11,7 @@
 			margin:0;
 			font-family:'Lato', sans-serif;
 			text-align:center;
-			color: #999;
+			color: #851111;
 		}
 
 		.welcome {
@@ -34,9 +35,38 @@
 	</style>
 </head>
 <body>
-	<div class="welcome">
-		<a href="/auth/login" title="Cprov"><img src="/images/click.jpeg"/></a>
-		<h1>Bienvenido al sistema de Control de registros CPROV.</h1>
+
+
+	
+
+		<h1>BIENVENIDO AL SISTEMA DE CONTROL DE REGISTROS </h1>
 	</div>
+
+	<div class="BIENVENIDO">
+		
+		<h1>  </h1>
+	</div>
+
+	<div class="BIENVENIDO">
+			
+		<h1> DE PROVEEDORES DE LA DPPCG </h1>
+	</div>
+<div class="BIENVENIDO">
+		
+		<h1>  </h1>
+	</div>
+<div class="BIENVENIDO">
+		<a style="color:851111">
+		<h1>PRESIONE EN LA IMAGEN PARA CONTINUAR</h1>
+	</div>
+
+	<div class="BIENVENIDO">
+		
+		<h1>  </h1>
+	</div>
+
+<div class="BIENVENIDO">
+		<a href="/auth/login" title="Cprov"><img src="/images/logo.jpeg"/></a>
+
 </body>
 </html>

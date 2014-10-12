@@ -1,4 +1,3 @@
-
 @extends('layouts.index')
 
 @section('content')
@@ -19,171 +18,259 @@
 
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
-		          <div class="form-group">
+		         
+			  		<div class="form-group">
+			            <label class="control-label col-md-1">Tipo de Empresa</label>
+			            <div class="col-md-2">
+			              <select class="select2able select2-offscreen" tabindex="-1" name="id_tipo_empresa" id="id_tipo_empresa" required>
+			              	@foreach( $tipo_empresas as $tipo_empresa )
+			              	<option value="{{ $tipo_empresa->id }}">{{ $tipo_empresa->descripcion }}</option>
+			              	@endforeach
+			              </select>
+			            </div>
+
 			            <label class="control-label col-md-2">Código</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Codigo de la empresa" name="codigo" type="text"/>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Codigo de la empresa" name="codigo" type="text" id="id_codigo" readonly required/>
 			            </div>
-			        </div>
+
+			            <label class="control-label col-md-2">Rif</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el fif" name="rif" type="text" required>
+			            </div>
+			           </div>
+
 					<div class="form-group">
-			            <label class="control-label col-md-2">Nombre de la Empresa</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el nombre del representate" name="nombre" type="text">
+			            <label class="control-label col-md-1">Nombre de la Empresa</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el nombre de la empresa" name="nombre" type="text" required>
 			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Representante</label>
-			            <div class="col-md-7">
-			              <select class="select2able select2-offscreen" tabindex="-1" name="id_persona">
+			        
+			            <label class="control-label col-md-1">Representante</label>
+			            <div class="col-md-2">
+			              <select class="select2able select2-offscreen" tabindex="-1" name="id_persona" required>
 			              	@foreach( $personas as $persona )
 			              	<option value="{{ $persona->id }}">{{ $persona->nombre }} - {{ $persona->cedula}}</option>
 			              	@endforeach
 			              </select>
 			            </div>
+
+			            <label class="control-label col-md-2">Actividad</label>
+			            <div class="col-md-3">
+			              <select class="select2able select2-offscreen" tabindex="-1" name="id_actividad" required>
+			              	@foreach( $actividades as $actividad )
+			              	<option value="{{ $actividad->id }}">{{ $actividad->descripcion }}</option>
+			              	@endforeach
+			              </select>
+			            </div>
 			          </div>
-			        <!--
+			 
 					<div class="form-group">
-			            <label class="control-label col-md-2">Representante *</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el nombre del representate" name="id_persona" type="text">
+			            <label class="control-label col-md-1">Dirección</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba direccion de la empresa" name="direccion" type="text" required>
 			            </div>
-			        </div>-->
-					<div class="form-group">
-			            <label class="control-label col-md-2">Dirección</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba direccion de la empresa" name="direccion" type="text">
-			            </div>
-			        </div>
 
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Teléfono</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el telefono de la empresa" name="telefono" type="text">
-			            </div>
-			        </div>
 
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Municipio</label>
-			            <div class="col-md-7">
-			              <select class="select2able select2-offscreen" tabindex="-1" name="id_municipio">
+			             <label class="control-label col-md-1">Municipio</label>
+			            <div class="col-md-2">
+			              <select class="select2able select2-offscreen" tabindex="-1" name="id_municipio" required>
 			              	@foreach( $municipios as $municipio )
 			              	<option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
 			              	@endforeach
 			              </select>
 			            </div>
-			          </div>
-			        <!--
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Municipio *</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Seleccione el municipio de la empresa" name="id_municipio" type="text">
-			            </div>
-			        </div>-->
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Fecha de Ingreso</label>
+			    
+			            <label class="control-label col-md-2">Teléfono</label>
 			            <div class="col-md-3">
-			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_ingreso"><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
-			              </div>
+			              <input class="form-control" placeholder="Escriba el telefono de la empresa" name="telefono" type="text" required>
 			            </div>
-			        </div>
-
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Servicio</label>
-			            <div class="col-md-7">
-			              <select class="select2able select2-offscreen" tabindex="-1" name="id_servicio">
-			              	@foreach( $servicios as $servicio )
-			              	<option value="{{ $municipio->id }}">{{ $servicio->descripcion }}</option>
-			              	@endforeach
-			              </select>
-			            </div>
-			          </div>
-			        <!--<div class="form-group">
-			            <label class="control-label col-md-2">Servicio *</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Seleccione el servicio de la empresa" name="id_servicio" type="text">
-			            </div>
-			        </div>-->
 			        
+			       
+			          </div>
+			       
 			        <div class="form-group">
-			            <label class="control-label col-md-2">Actividad *</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Seleccione el servicio de la empresa" name="id_actividad" type="text">
-			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Rif</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el fif" name="rif" type="text">
-			            </div>
-			        </div>
-
-			       <div class="form-group">
-			            <label class="control-label col-md-2">Capital</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="El capital de la empresa" name="capital" type="text">
-			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Número de Registro</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Escriba el numero de registro" name="num_registro" type="text">
-			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Fecha de Registro</label>
+			            <label class="control-label col-md-1">Fecha de Ingreso</label>
 			            <div class="col-md-3">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_registro"><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			                <input class="form-control" type="text" name="fecha_ingreso" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
 			            </div>
+
+			            <label class="control-label col-md-1">Capital</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="El capital de la empresa" name="capital" type="text" required>
+			            </div>
+
+			            <label class="control-label col-md-2">Número de Registro</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el numero de registro" name="num_registro" type="text" required>
+			            </div>
+		
 			        </div>
+
 			        <div class="form-group">
-			            <label class="control-label col-md-2">SNC</label>
-			            <div class="col-md-7">
+			            <label class="control-label col-md-1">Número de SNC</label>
+			            <div class="col-md-3">
 			              <input class="form-control" placeholder="Escriba el numero de snc" name="snc" type="text">
 			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Fecha de SNC</label>
+
+			            <label class="control-label col-md-1">Número INCE</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de INCE" name="num_ince" type="text" required>
+			            </div>
+			       
+			           <label class="control-label col-md-2">Fecha de Registro</label>
 			            <div class="col-md-3">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_snc"><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			                <input class="form-control" type="text" name="fecha_registro" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
 			            </div>
-			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Dias Provisional</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
+						</div>
+
+					<div class="form-group">
+
+			            <label class="control-label col-md-1">Fecha de SNC</label>
+			            <div class="col-md-3">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_snc" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
 			            </div>
+			            
+			            <label class="control-label col-md-1">Fecha de INCE</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_ince" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			            </div>
+			        
+			            <label class="control-label col-md-2">Número ISLR</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el numero de ISLR " name="num_islr" type="text" required>
+			            </div>
+			        
 			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Provisional</label>
-			            <div class="col-md-7 clearfix">
-			              <div class="holder">
+
+			         <div class="form-group">
+
+						<label class="control-label col-md-1">Número de Patente</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el numero de patente" name="num_patente" type="text" required>
+			            </div>
+ 						
+
+			            <label class="control-label col-md-1">Número de licencia</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de licencia" name="licencia" type="text" required>
+					     
+					     </div>
+			        
+
+			                <label class="control-label col-md-2">Fecha de ISLR</label>
+			            <div class="col-md-3">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_islr" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	  </div>
+			            </div>
+
+					<div class="form-group">
+
+					<label class="control-label col-md-1">Fecha de Patente</label>
+			            <div class="col-md-3">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_patente" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	  </div>
+			          
+
+			          	  <label class="control-label col-md-1">Fecha Coling</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_municipal" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	  </div>
+
+						
+            		<label class="control-label col-md-2">Número de SolMuni</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="licencia" type="text" required>
+			              
+			            </div>
+			            </div>
+
+
+					<div class="form-group">
+
+					<label class="control-label col-md-1">Número de Seguro</label>
+			            <div class="col-md-3">
+			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="num_segurosocial" type="text" required>
+			              
+			            </div>
+			           
+			            <label class="control-label col-md-1">Dias Provisional</label>
+			             <div class="col-md-2">
+		              <input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
+			           
+			            </div>
+
+								 <label class="control-label col-md-2">Fecha SolMuni</label>
+			            <div class="col-md-3">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_municipal" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	  </div>
+						</div>
+
+						<div class="form-group">
+
+							 <label class="control-label col-md-1">Fecha de Seguro</label>
+			            <div class="col-md-3">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_segurosocial" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	  </div>
+
+			            <label class="control-label col-md-1">Provisional</label>
+			            <div class="holder">
 			                <input class="check-ios" id="check" name="provisional" type="checkbox" value="None"><label for="check"></label><span></span>
 			              </div>
 			              <em>(Chequee el botón si la empresa es provisional)</em>
+			            <div class="col-md-7 clearfix">
+			              
 			            </div>
 			        </div>
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Tipo de Empresa *</label>
-			            <div class="col-md-7">
-			              <input class="form-control" placeholder="seleccione el tipo de empresa" name="id_tipo_empresa" type="text">
-			            </div>
-			        </div>
-
+					
 					<div class="form-group">
-			            <label class="control-label col-md-2"></label>
-			            <div class="col-md-7">
+			            <label class="control-label col-md-1"></label>
+			            <div class="col-md-10">
 			              <input class="form-control" placeholder="" value="Enviar" type="submit">
-			            </div>
-			        </div>
+			          </div>
+			          </div>
+
+			        
 		        </form>
 		      </div>
             </div>
           </div>
         </div>
+
+        <script type="text/javascript">
+
+        $(document).on('ready', function(){
+        	$('#id_tipo_empresa').change(function(e){
+        		var elem = $(this);
+        		console.log("Cambio a: " + elem.val());
+        		var data = {
+        			'id' : elem.val(),
+        		};
+        		$.post('/ajax/codigoempresas', data, function(data){
+        			$('#id_codigo').val(data);
+        			console.log(data);
+        		});
+        	})
+        });
+
+        </script>
         <!-- end DataTables Example -->
         @stop

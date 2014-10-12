@@ -15,4 +15,5 @@ class Personas extends \Eloquent {
 
 		return $this->belongsToMany('Empresas','socios','id_persona','id_empresa');
 	}
+	
 }
