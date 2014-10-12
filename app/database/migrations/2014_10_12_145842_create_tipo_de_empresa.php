@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Personas extends Migration {
+class CreateTipoDeEmpresa extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class Personas extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('personas', function($table)
+		Schema::create('tipo_empresas', function($table)
 		{
 			$table->increments('id');
-		    $table->string('nombre');
-            $table->string('cedula');
-            $table->string('rif');
+		    $table->string('descripcion');
+		    $table->char('prefijo', 1);
             $table->timestamps();
             $table->softDeletes();
 		});
 	}
+
 	/**
 	 * Reverse the migrations.
 	 *
@@ -29,7 +29,7 @@ class Personas extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('personas');
+		Schema::drop('tipo_empresas');
 	}
 
 }

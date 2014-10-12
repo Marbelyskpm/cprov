@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Islr extends Migration {
+class CreateSolmuni extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,12 +13,12 @@ class Islr extends Migration {
 	public function up()
 	{
 		
-		Schema::create('islr', function($table)
+		Schema::create('solmuni', function($table)
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_islr');
-            $table->date('fecha_islr');
+            $table->string('licencia');
+            $table->date('fecha_municipal');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -31,7 +31,7 @@ class Islr extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('islr');
+		Schema::drop('solmuni');
 	}
 
 }

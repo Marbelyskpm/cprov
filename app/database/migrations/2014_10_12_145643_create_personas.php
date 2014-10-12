@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Solmuni extends Migration {
+class CreatePersonas extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,16 @@ class Solmuni extends Migration {
 	 */
 	public function up()
 	{
-		
-		Schema::create('solmuni', function($table)
+		Schema::create('personas', function($table)
 		{
-		    $table->increments('id');
-		    $table->string('id_empresa');
-            $table->string('licencia');
-            $table->date('fecha_municipal');
+			$table->increments('id');
+		    $table->string('nombre');
+            $table->string('cedula');
+            $table->string('rif');
             $table->timestamps();
             $table->softDeletes();
 		});
 	}
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,7 +29,7 @@ class Solmuni extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('solmuni');
+		Schema::drop('personas');
 	}
 
 }

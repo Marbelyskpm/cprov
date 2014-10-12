@@ -296,6 +296,24 @@
     */
 
     $("#dataTable1").dataTable({
+      "oLanguage": {
+          "sProcessing":     "Procesando",
+          "sSearch":         "Búsqueda",
+          "sLengthMenu":     "Ver _MENU_ registros",
+          "sInfo":           "Viendo _START_ a _END_ de _TOTAL_ registros",
+          "sInfoEmpty":      "Viendo 0 a 0 de 0 registros",
+          "sInfoFiltered":   "(filtrado desde _MAX_ registros totales)",
+          "sInfoPostFix":    "",
+          "sLoadingRecords": "Cargando...",
+          "sZeroRecords":    "Ningún registro encontrado",
+          "sEmptyTable":     "Ningún dato disponible en la tabla",
+          "oPaginate": {
+              "sFirst":      "Primero",
+              "sPrevious":   "Anterior",
+              "sNext":       "Siguiente",
+              "sLast":       "Último"
+          }
+      },
       "sPaginationType": "full_numbers",
       aoColumnDefs: [
         {

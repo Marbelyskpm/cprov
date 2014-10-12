@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Actividades extends Migration {
+class CreatePatente extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,12 @@ class Actividades extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('actividades', function($table)
+		Schema::create('patente', function($table)
 		{
-			$table->increments('id');
-		    $table->string('descripcion');
+		    $table->increments('id');
+		    $table->string('id_empresa');
+            $table->string('num_patente');
+            $table->date('fecha_patente');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -28,7 +30,7 @@ class Actividades extends Migration {
 	 */
 	public function down()
 	{
-	Schema::drop('actividades');
+		Schema::drop('patente');
 	}
 
 }

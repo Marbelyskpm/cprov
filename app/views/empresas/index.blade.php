@@ -107,8 +107,6 @@
                       <td class="hidden-xs">
                         {{ $empresa->direccion }}
                       </td>
-                      
-                      
                       <td class="hidden-xs">
                         {{ $empresa->telefono }}
                       </td>

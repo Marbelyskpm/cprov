@@ -3,7 +3,6 @@
 class Personas extends \Eloquent {
 
     use SoftDeletingTrait;
-	protected $fillable = [];
 	protected $table = 'personas';
 
 	public function empresas(){

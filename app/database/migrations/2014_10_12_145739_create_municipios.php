@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TipoDeEmpresa extends Migration {
+class CreateMunicipios extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class TipoDeEmpresa extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('tipo_empresas', function($table)
+	Schema::create('municipios', function($table)
 		{
 			$table->increments('id');
-		    $table->string('descripcion');
-		    $table->char('prefijo', 1);
+		    $table->string('nombre');
             $table->timestamps();
             $table->softDeletes();
 		});
+	
 	}
 
 	/**
@@ -29,7 +29,7 @@ class TipoDeEmpresa extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tipo_empresas');
+		Schema::drop('municipios');
 	}
 
 }

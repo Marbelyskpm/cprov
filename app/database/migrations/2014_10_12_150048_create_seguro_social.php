@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Patente extends Migration {
+class CreateSeguroSocial extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,12 @@ class Patente extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('patente', function($table)
+		Schema::create('segurosocial', function($table)
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_patente');
-            $table->date('fecha_patente');
+            $table->string('num_segurosocial');
+            $table->date('fecha_segurosocial');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -30,7 +30,20 @@ class Patente extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('patente');
+		Schema::drop('segurosocial');
+	}public function up()
+	{
+		//
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		//
 	}
 
 }

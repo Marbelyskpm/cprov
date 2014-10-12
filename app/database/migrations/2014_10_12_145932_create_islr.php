@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Coling extends Migration {
+class CreateIslr extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,13 @@ class Coling extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('coling', function($table)
+		
+		Schema::create('islr', function($table)
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_coling');
-            $table->date('fecha_coling');
+            $table->string('num_islr');
+            $table->date('fecha_islr');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -30,7 +31,7 @@ class Coling extends Migration {
 	 */
 	public function down()
 	{
-	Schema::drop('coling');
+		Schema::drop('islr');
 	}
 
 }

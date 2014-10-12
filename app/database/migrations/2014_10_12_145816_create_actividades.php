@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Segurosocial extends Migration {
+class CreateActividades extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,10 @@ class Segurosocial extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('segurosocial', function($table)
+		Schema::create('actividades', function($table)
 		{
-		    $table->increments('id');
-		    $table->string('id_empresa');
-            $table->string('num_segurosocial');
-            $table->date('fecha_segurosocial');
+			$table->increments('id');
+		    $table->string('descripcion');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -30,6 +28,7 @@ class Segurosocial extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('segurosocial');
+	Schema::drop('actividades');
 	}
+
 }
