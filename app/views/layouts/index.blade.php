@@ -146,7 +146,9 @@
         <div class="container-fluid top-bar">
           <div class="pull-right">
             <ul class="nav navbar-nav pull-right">
-                  
+              <li>
+                <img src="/images/etiqueta.png" width="100%" height="45">
+              </li>
               <!--
               <li class="dropdown settings hidden-xs">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="/#"><span aria-hidden="true" class="se7en-gear"></span>
@@ -189,7 +191,8 @@
               </li>
             </ul>
           </div>
-          <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="/"></a>
+          <!--
+          <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="/"></a>-->
         </div>
         <div class="container-fluid main-nav clearfix">
           <div class="nav-collapse">
