@@ -147,6 +147,7 @@
           <div class="pull-right">
             <ul class="nav navbar-nav pull-right">
                   
+              <!--
               <li class="dropdown settings hidden-xs">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="/#"><span aria-hidden="true" class="se7en-gear"></span>
                   <div class="sr-only">
@@ -171,8 +172,9 @@
                   </li>
                 </ul>
               </li>
+                -->
               <li class="dropdown user hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="/#">
-                <img width="34" height="34" src="/images/marbe.jpg" />Marbelys Pérez<b class="caret"></b></a>
+                <img width="34" height="34" src="/images/marbe.jpg" />{{ Auth::user()->nombre}} {{ Auth::user()->apellido}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="/#">
                     <i class="icon-user"></i>Mi Cuenta</a>
@@ -187,10 +189,7 @@
               </li>
             </ul>
           </div>
-          <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="/">se7en</a>
-          <form class="navbar-form form-inline col-lg-2 hidden-xs">
-            <input class="form-control" placeholder="Busqueda" type="text">
-          </form>
+          <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="/"></a>
         </div>
         <div class="container-fluid main-nav clearfix">
           <div class="nav-collapse">
@@ -204,11 +203,9 @@
               <li><a href="/personas">
                 <span aria-hidden="true" class="icon-user"></span>Personas</a>
               </li>
+              @if(Auth::check() && Auth::user()->tipo=='administrador')
               <li><a href="/municipios">
                 <span aria-hidden="true" class="se7en-feed"></span>Municipios</a>
-              </li>
-              <li><a href="/servicios">
-                <span aria-hidden="true" class="se7en-feed"></span>Servicios</a>
               </li>
               <li><a href="/actividades">
                 <span aria-hidden="true" class="se7en-feed"></span>Actividades</a>
@@ -216,9 +213,10 @@
               <li><a href="/tipoempresas">
                 <span aria-hidden="true" class="se7en-feed"></span>Tipos de Empresas</a>
               </li>
-              <li><a href="/socios">
-                <span aria-hidden="true" class="se7en-feed"></span>Socios</a>
+              <li><a href="/usuarios">
+                <span aria-hidden="true" class="se7en-feed"></span>Usuarios</a>
               </li>
+              @endif
             </ul>
           </div>
         </div>
@@ -232,6 +230,21 @@
 
       </div>
     </div>
+    <style type="text/css">
+      footer{
+        color: #EEE;
+        padding: 5px;
+        width: 100%;
+        display:block;
+        text-align:center;
+        background: #620000;
+        position:absolute;
+        bottom: 0;
+      }
+    </style>
+    <footer>
+      Todos los derechos Reservador © 2013. | Coordinación de Tecnología y Sistemas | Dirección de Planificación, Presupuesto y Control de Gestión.
+    </footer>
   </body>
 
 </html>

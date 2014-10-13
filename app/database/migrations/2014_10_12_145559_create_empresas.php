@@ -22,15 +22,10 @@ class CreateEmpresas extends Migration {
             $table->string('telefono');
             $table->integer('id_municipio');
             $table->date('fecha_ingreso');
-            $table->integer('id_servicio');
             $table->integer('id_actividad');
             $table->string('rif');
-            
-            $table->date('fecha_registro');
-            $table->string('num_registro');
+            $table->string('nit');
             $table->decimal('capital');
-            $table->string('snc');
-            $table->date('fecha_snc');
             $table->boolean('provisional');
             $table->integer('dias_provicional');
             $table->integer('id_tipo_empresa');

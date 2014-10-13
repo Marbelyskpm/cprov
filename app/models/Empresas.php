@@ -35,4 +35,53 @@ class Empresas extends \Eloquent {
 
     	return $this->belongsTo('Actividades','id_actividad');
     }
+
+    public function registro(){
+
+    	return $this->hasOne('Registro', 'id_empresa', 'id');
+
+    }
+
+    public function snc(){
+
+    	return $this->hasOne('SNC', 'id_empresa', 'id');
+
+    }
+
+    public function ince(){
+
+    	return $this->hasOne('INCE', 'id_empresa', 'id');
+
+    }
+
+    public function islr(){
+
+    	return $this->hasOne('ISLR', 'id_empresa', 'id');
+
+    }
+
+    public function patente(){
+
+    	return $this->hasOne('Patente', 'id_empresa', 'id');
+
+    }
+
+    public function coling(){
+
+    	return $this->hasOne('ColegioDeIngenieros', 'id_empresa', 'id');
+
+    }
+
+    public function solmuni(){
+
+    	return $this->hasOne('SolvenciaMunicipal', 'id_empresa', 'id');
+
+    }
+
+    public function seguro(){
+
+    	return $this->hasOne('SeguroSocial', 'id_empresa', 'id');
+
+    }
+    
 }

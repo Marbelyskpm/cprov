@@ -16,8 +16,8 @@ class CreateSeguroSocial extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_segurosocial');
-            $table->date('fecha_segurosocial');
+            $table->string('numero');
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -31,19 +31,6 @@ class CreateSeguroSocial extends Migration {
 	public function down()
 	{
 		Schema::drop('segurosocial');
-	}public function up()
-	{
-		//
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		//
 	}
 
 }

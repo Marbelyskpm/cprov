@@ -22,7 +22,8 @@ html {
 body {
   font-family: "Lato", sans-serif !important;
   color: #666666;
-  background: #f99;
+  background-image: url('/images/fondo.png');
+  background-size: 100% auto;
   padding-top: 140px;
   min-height: 100%; }
 
@@ -125,7 +126,7 @@ dl {
 /*----------------------------------------------------------------------------------- */
 body.login1 {
   padding: 0;
-  background: url(../images/login-blurry-bg.jpg) no-repeat center center;
+  background: url(../images/fondo.png) no-repeat center center;
   background-size: cover;
   position: relative; }
   body.login1.signup .login-container {
@@ -135,8 +136,9 @@ body.login1 {
     width: 100%;
     height: 100%; }
   body.login1 .login-container {
-    background-color: white;
-    background-color: rgba(255, 255, 255, 0.95);
+    /*background-color: white;*/
+    color: #FFF;
+    background-color: rgba(125, 40, 40, 0.95);
     border-radius: 40px;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
     padding: 30px;
@@ -145,7 +147,7 @@ body.login1 {
     height: 380px;
     text-align: center;
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     margin: -190px 0 0 -190px;
     opacity: 0;
@@ -464,7 +466,7 @@ body.login2 {
 .page-title {
   padding: 0 20px; }
   .page-title h1 {
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     color: #9D2828;
     font-weight: 300; }
 
@@ -2134,14 +2136,14 @@ input[type="text"] {
 /*----------------------------------------------------------------------------------- */
 .select2-container {
   width: 100%;
-  height: 36px; }
+  height: 24px; }
   .select2-container .select2-choice {
     height: 100%; }
     .select2-container .select2-choice > .select2-chosen {
       height: 100%;
-      line-height: 33px; }
+      line-height: 24px; }
     .select2-container .select2-choice .select2-arrow {
-      width: 34px;
+      width: 24px;
       text-align: center; }
       .select2-container .select2-choice .select2-arrow b {
         background: none;

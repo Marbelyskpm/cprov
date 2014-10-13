@@ -27,7 +27,7 @@ class AuthController extends \BaseController {
 
 			else:
 
-				return "Usted es un simple operador";
+				return Redirect::to('/empresas');
 
 			endif;
 

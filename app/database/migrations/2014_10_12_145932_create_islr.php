@@ -17,8 +17,8 @@ class CreateIslr extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_islr');
-            $table->date('fecha_islr');
+            $table->string('numero');
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
 		});

@@ -147,7 +147,7 @@
 }
 .has-switch span.switch-primary,
 .has-switch span.switch-left {
-  color: #ffffff;
+  color: #FFFFFF;
   background-color: #007aff;
 }
 .has-switch span.switch-info {
@@ -155,7 +155,7 @@
   background-color: #41a7c5;
 }
 .has-switch span.switch-success {
-  color: #ffffff;
+  color: #FFFFFF;
   background-color: #60c560;
 }
 .has-switch span.switch-warning {

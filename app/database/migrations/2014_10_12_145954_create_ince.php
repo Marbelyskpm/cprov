@@ -17,8 +17,8 @@ class CreateInce extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_ince');
-            $table->date('fecha_ince');
+            $table->string('numero');
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -31,7 +31,7 @@ class CreateInce extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('solmuni');
+		Schema::drop('ince');
 	}
 
 }

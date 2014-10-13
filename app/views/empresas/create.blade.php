@@ -29,20 +29,24 @@
 			              </select>
 			            </div>
 
-			            <label class="control-label col-md-2">Código</label>
+			            <label class="control-label col-md-1">Código</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Codigo de la empresa" name="codigo" type="text" id="id_codigo" readonly required/>
 			            </div>
 
-			            <label class="control-label col-md-2">Rif</label>
-			            <div class="col-md-3">
-			              <input class="form-control" placeholder="Escriba el fif" name="rif" type="text" required>
+			            <label class="control-label col-md-1">Rif</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el rif" name="rif" type="text" required>
+			            </div>
+			            <label class="control-label col-md-1">Nit</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el nit" name="nit" type="text" required>
 			            </div>
 			           </div>
 
 					<div class="form-group">
 			            <label class="control-label col-md-1">Nombre de la Empresa</label>
-			            <div class="col-md-3">
+			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el nombre de la empresa" name="nombre" type="text" required>
 			            </div>
 			        
@@ -55,19 +59,26 @@
 			              </select>
 			            </div>
 
-			            <label class="control-label col-md-2">Actividad</label>
-			            <div class="col-md-3">
+			            <label class="control-label col-md-1">Actividad</label>
+			            <div class="col-md-2">
 			              <select class="select2able select2-offscreen" tabindex="-1" name="id_actividad" required>
 			              	@foreach( $actividades as $actividad )
 			              	<option value="{{ $actividad->id }}">{{ $actividad->descripcion }}</option>
 			              	@endforeach
 			              </select>
 			            </div>
+
+			            <label class="control-label col-md-1">Fecha de Ingreso</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_ingreso" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			            </div>
 			          </div>
 			 
 					<div class="form-group">
 			            <label class="control-label col-md-1">Dirección</label>
-			            <div class="col-md-3">
+			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba direccion de la empresa" name="direccion" type="text" required>
 			            </div>
 
@@ -81,57 +92,54 @@
 			              </select>
 			            </div>
 			    
-			            <label class="control-label col-md-2">Teléfono</label>
-			            <div class="col-md-3">
+			            <label class="control-label col-md-1">Teléfono</label>
+			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el telefono de la empresa" name="telefono" type="text" required>
-			            </div>
-			        
-			       
-			          </div>
-			       
-			        <div class="form-group">
-			            <label class="control-label col-md-1">Fecha de Ingreso</label>
-			            <div class="col-md-3">
-			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_ingreso" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
-			              </div>
 			            </div>
 
 			            <label class="control-label col-md-1">Capital</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="El capital de la empresa" name="capital" type="text" required>
 			            </div>
+			        
+			       
+			          </div>
+			       
+			        <div class="form-group">
 
-			            <label class="control-label col-md-2">Número de Registro</label>
-			            <div class="col-md-3">
+			            <label class="control-label col-md-1">Número de Registro</label>
+			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el numero de registro" name="num_registro" type="text" required>
 			            </div>
-		
-			        </div>
 
-			        <div class="form-group">
 			            <label class="control-label col-md-1">Número de SNC</label>
-			            <div class="col-md-3">
-			              <input class="form-control" placeholder="Escriba el numero de snc" name="snc" type="text">
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de snc" name="num_snc" type="text">
 			            </div>
 
 			            <label class="control-label col-md-1">Número INCE</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el numero de INCE" name="num_ince" type="text" required>
 			            </div>
-			       
-			           <label class="control-label col-md-2">Fecha de Registro</label>
-			            <div class="col-md-3">
+			        
+			            <label class="control-label col-md-1">Número ISLR</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de ISLR " name="num_islr" type="text" required>
+			            </div>
+		
+			        </div>
+
+			        <div class="form-group">
+
+			           <label class="control-label col-md-1">Fecha de Registro</label>
+			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_registro" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
 			            </div>
-						</div>
-
-					<div class="form-group">
 
 			            <label class="control-label col-md-1">Fecha de SNC</label>
-			            <div class="col-md-3">
+			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_snc" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
@@ -143,110 +151,95 @@
 			                <input class="form-control" type="text" name="fecha_ince" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
 			            </div>
-			        
-			            <label class="control-label col-md-2">Número ISLR</label>
-			            <div class="col-md-3">
-			              <input class="form-control" placeholder="Escriba el numero de ISLR " name="num_islr" type="text" required>
-			            </div>
-			        
-			        </div>
+			            
+			            <label class="control-label col-md-1">Fecha de ISLR</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_islr" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	</div>
+
+					</div>
 
 			         <div class="form-group">
 
 						<label class="control-label col-md-1">Número de Patente</label>
-			            <div class="col-md-3">
+			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el numero de patente" name="num_patente" type="text" required>
 			            </div>
  						
 
-			            <label class="control-label col-md-1">Número de licencia</label>
+			            <label class="control-label col-md-1">Colegio de Ingenieros</label>
 			            <div class="col-md-2">
-			              <input class="form-control" placeholder="Escriba el numero de licencia" name="licencia" type="text" required>
-					     
-					     </div>
-			        
+			              <input class="form-control" placeholder="Escriba el numero de licencia" name="num_coling" type="text" required>
+					    </div>
 
-			                <label class="control-label col-md-2">Fecha de ISLR</label>
-			            <div class="col-md-3">
-			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_islr" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
-			              </div>
-			          	  </div>
+	            		<label class="control-label col-md-1">Número de Sol. Mun.</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="num_solmuni" type="text" required>
 			            </div>
+
+	            		<label class="control-label col-md-1">Número de Seguro</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de Seguro" name="num_seguro" type="text" required>
+			            </div>
+
+			        </div>
 
 					<div class="form-group">
 
-					<label class="control-label col-md-1">Fecha de Patente</label>
-			            <div class="col-md-3">
+						<label class="control-label col-md-1">Fecha de Patente</label>
+			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_patente" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
-			          	  </div>
+			          	</div>
 			          
-
-			          	  <label class="control-label col-md-1">Fecha Coling</label>
+			          	<label class="control-label col-md-1">Fecha Col. Ing.</label>
 			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_municipal" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			                <input class="form-control" type="text" name="fecha_coling" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
-			          	  </div>
+			          	</div>
 
-						
-            		<label class="control-label col-md-2">Número de SolMuni</label>
-			            <div class="col-md-3">
-			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="licencia" type="text" required>
-			              
-			            </div>
-			            </div>
+			          	<label class="control-label col-md-1">Fecha Sol. Mun.</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_solmuni" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	</div>
 
+						<label class="control-label col-md-1">Fecha de Seguro</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_seguro" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	</div>
+
+					</div>
 
 					<div class="form-group">
 
-					<label class="control-label col-md-1">Número de Seguro</label>
-			            <div class="col-md-3">
-			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="num_segurosocial" type="text" required>
-			              
+						<label class="control-label col-md-1">Provisional</label>
+			            <div class="col-md-4 clearfix">
+				            <div class="holder">
+				                <input class="check-ios" id="check" name="provisional" type="checkbox" value="None"><label for="check"></label><span></span>
+				            </div>
+				              <em>(Chequee el botón si la empresa es provisional)</em>
 			            </div>
-			           
+
 			            <label class="control-label col-md-1">Dias Provisional</label>
-			             <div class="col-md-2">
-		              <input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
-			           
-			            </div>
+			            <div class="col-md-2">
+		              		<input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
+			           	</div>
 
-								 <label class="control-label col-md-2">Fecha SolMuni</label>
 			            <div class="col-md-3">
-			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_municipal" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
-			              </div>
-			          	  </div>
-						</div>
-
-						<div class="form-group">
-
-							 <label class="control-label col-md-1">Fecha de Seguro</label>
-			            <div class="col-md-3">
-			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
-			                <input class="form-control" type="text" name="fecha_segurosocial" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
-			              </div>
-			          	  </div>
-
-			            <label class="control-label col-md-1">Provisional</label>
-			            <div class="holder">
-			                <input class="check-ios" id="check" name="provisional" type="checkbox" value="None"><label for="check"></label><span></span>
-			              </div>
-			              <em>(Chequee el botón si la empresa es provisional)</em>
-			            <div class="col-md-7 clearfix">
-			              
-			            </div>
-			        </div>
-					
-					<div class="form-group">
-			            <label class="control-label col-md-1"></label>
-			            <div class="col-md-10">
-			              <input class="form-control" placeholder="" value="Enviar" type="submit">
-			          </div>
-			          </div>
+			          	</div>
+			            <div class="col-md-1">
+			              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">
+			          	</div>
+								 
+					</div>
 
 			        
 		        </form>

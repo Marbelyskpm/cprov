@@ -96,7 +96,7 @@
                         <label><input name="optionsRadios1" type="checkbox" value="option1"><span></span></label>
                       </td>
                       <td>
-                        {{ $empresa->codigo }}
+                        <a class="fancybox fancybox.ajax" href="{{ $route }}/show/{{ Crypt::encrypt($empresa->id) }}">{{ $empresa->codigo }}</a>
                       </td>
                       <td class="hidden-xs">
                         {{ $empresa->nombre }}
@@ -106,6 +106,9 @@
                       </td>
                       <td class="hidden-xs">
                         {{ $empresa->direccion }}
+                      </td>
+                      <td class="hidden-xs">
+                        {{ $empresa->rif }}
                       </td>
                       <td class="hidden-xs">
                         {{ $empresa->telefono }}

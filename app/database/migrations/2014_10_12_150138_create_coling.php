@@ -16,8 +16,8 @@ class CreateColing extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_coling');
-            $table->date('fecha_coling');
+            $table->string('numero');
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
 		});
@@ -30,7 +30,7 @@ class CreateColing extends Migration {
 	 */
 	public function down()
 	{
-	Schema::drop('coling');
+		Schema::drop('coling');
 	}
 
 }

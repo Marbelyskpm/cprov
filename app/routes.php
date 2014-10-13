@@ -44,10 +44,10 @@ elseif(Auth::check()):
 	Route::controller('/empresas', 'EmpresaController');
 	Route::controller('/personas', 'PersonaController');
 	Route::controller('/socios', 'SocioController');
-	Route::controller('/municipios', 'MunicipioController');
+	/*Route::controller('/municipios', 'MunicipioController');
 	Route::controller('/servicios', 'ServicioController');
 	Route::controller('/actividades', 'ActividadController');
-	Route::controller('/tipoempresas', 'TipoEmpresaController');
+	Route::controller('/tipoempresas', 'TipoEmpresaController');*/
 	Route::controller('/ajax', 'AjaxController');
 endif;
 	Route::controller('/auth','AuthController');

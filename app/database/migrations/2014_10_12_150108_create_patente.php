@@ -16,8 +16,8 @@ class CreatePatente extends Migration {
 		{
 		    $table->increments('id');
 		    $table->string('id_empresa');
-            $table->string('num_patente');
-            $table->date('fecha_patente');
+            $table->string('numero');
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
 		});
