@@ -234,5 +234,43 @@ class EmpresaController extends \BaseController {
 
    }
 
+   public function postFindrepresentante(){
+
+   		$persona = Personas::where('cedula','=',Input::get('cedula'))->get();
+
+   		if(count($persona) > 0):
+   			return $persona[0];
+   		else:
+   			return 0;
+   		endif;
+
+   }
+
+   public function getRepresentante(){
+
+   		return View::make('empresas.representante')->with( array( 'route' => $this->route ) );
+
+   }
+
+   public function postRepresentante(){
+
+   		$persona = new Personas();
+   		$persona->nombre = Input::get('nombre');
+   		$persona->cedula = Input::get('cedula');
+   		$persona->rif = Input::get('rif');
+
+   		if($persona->save()):
+   			$array = array(
+   				'id' => $persona->id,
+   				'nombre' => $persona->nombre,
+   				'cedula' => $persona->cedula,
+   				);
+   			return Response::json($array);
+   		else:
+   			return 0;
+   		endif;
+
+   }
+
 
 }

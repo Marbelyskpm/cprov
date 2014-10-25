@@ -1,8 +1,15 @@
 @extends('auth.layout')
 
 @section('content')
+
+  
     <!-- Login Screen -->
     <div class="login-wrapper">
+    <div align="CENTER" class="login">
+    <a href="/auth/login" title="Cprov"><img src="/images/logo_system.png"style = "padding-top:50px"/></a>
+
+
+    </div>
       <div class="login-container" style="height:150px; color:#fff !important">
         	@if(isset($error))
 				<div style="color:#FFF;">
@@ -24,7 +31,10 @@
           *:-ms-input-placeholder { /* Internet Explorer 10+ */
              color:    #fff;
           }
+     
+
         </style>
+
         <form id="login-form" action="" method="post">
           <div class="form-group">
             <input class="form-control" placeholder="Usuario" type="text" name="username" style="color:#fff!important">

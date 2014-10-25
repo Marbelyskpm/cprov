@@ -109,21 +109,6 @@
 			              </div>
 			            </div>
 			        </div>
-
-			        <div class="form-group">
-			            <label class="control-label col-md-2">Servicio</label>
-			            <div class="col-md-7">
-			              <select class="select2able select2-offscreen" tabindex="-1" name="id_servicio" required>
-			              	@foreach( $servicios as $servicio )
-			              		@if($empresa->id_servicio == $servicio->id)
-			              			<option value="{{ $municipio->id }}" selected>{{ $servicio->descripcion }}</option>
-			              		@else
-			              			<option value="{{ $municipio->id }}">{{ $servicio->descripcion }}</option>
-			              		@endif
-			              	@endforeach
-			              </select>
-			            </div>
-			          </div>
 			        <!--<div class="form-group">
 			            <label class="control-label col-md-2">Servicio *</label>
 			            <div class="col-md-7">

@@ -120,8 +120,8 @@ table.dataTable {
   color: #007aff;
 }
 .dataTables_paginate a.paginate_active {
-  border-color: #007aff;
-  background: #007aff;
+  border-color: #9D2828;
+  background: #9D2828;
   color: #FFF;
 }
 .dataTables_paginate a.paginate_button_disabled {

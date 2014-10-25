@@ -51,12 +51,20 @@
 			            </div>
 			        
 			            <label class="control-label col-md-1">Representante</label>
-			            <div class="col-md-2">
-			              <select class="select2able select2-offscreen" tabindex="-1" name="id_persona" required>
-			              	@foreach( $personas as $persona )
-			              	<option value="{{ $persona->id }}">{{ $persona->nombre }} - {{ $persona->cedula}}</option>
-			              	@endforeach
-			              </select>
+			            <div class="col-md-2" id="input-representante">
+			            	<a href="/empresas/representante" class="fancybox fancybox.ajax" id="add-representante">Ingresar un representante</a>
+			            	<input class="form-control" value="" type="hidden" name="id_persona" readonly>
+			            	<div id="form-display-representante" style="display:none">
+			            		<span id="form-display-representante-span"></span>
+			            		<a href="#" id="delete-representante" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>
+			            	</div>
+			            	<!--
+			              	<select class="select2able select2-offscreen" tabindex="-1" name="id_persona" required>
+			              		@foreach( $personas as $persona )
+			              			<option value="{{ $persona->id }}">{{ $persona->nombre }} - {{ $persona->cedula}}</option>
+			              		@endforeach
+			              	</select>
+			              	-->
 			            </div>
 
 			            <label class="control-label col-md-1">Actividad</label>
@@ -79,7 +87,7 @@
 					<div class="form-group">
 			            <label class="control-label col-md-1">Dirección</label>
 			            <div class="col-md-2">
-			              <input class="form-control" placeholder="Escriba direccion de la empresa" name="direccion" type="text" required>
+			              <input class="form-control" placeholder="Escriba dirección de la empresa" name="direccion" type="text" required>
 			            </div>
 
 
@@ -237,11 +245,8 @@
 			          	</div>
 			            <div class="col-md-1">
 			              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">
-			          	</div>
-								 
+			          	</div> 
 					</div>
-
-			        
 		        </form>
 		      </div>
             </div>
@@ -251,6 +256,26 @@
         <script type="text/javascript">
 
         $(document).on('ready', function(){
+        	$("#delete-representante").click(function(e){
+    			$('input[name=id_persona]').val('');
+				$('#form-display-representante').css({
+					'display':'none'
+				});
+				$('#add-representante').css({
+					'display':'block'
+				});
+        	});
+        	$('.fancybox').fancybox({
+				maxWidth	: 800,
+				maxHeight	: 600,
+				fitToView	: false,
+				width		: '70%',
+				height		: '70%',
+				autoSize	: false,
+				closeClick	: false,
+				openEffect	: 'none',
+				closeEffect	: 'none'
+			});
         	$('#id_tipo_empresa').change(function(e){
         		var elem = $(this);
         		console.log("Cambio a: " + elem.val());

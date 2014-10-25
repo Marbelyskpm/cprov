@@ -176,7 +176,7 @@
               </li>
                 -->
               <li class="dropdown user hidden-xs"><a data-toggle="dropdown" class="dropdown-toggle" href="/#">
-                <img width="34" height="34" src="/images/marbe.jpg" />{{ Auth::user()->nombre}} {{ Auth::user()->apellido}}<b class="caret"></b></a>
+                <img width="34" height="34" src="/images/logo.jpeg" />{{ Auth::user()->nombre}} {{ Auth::user()->apellido}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="/#">
                     <i class="icon-user"></i>Mi Cuenta</a>
@@ -219,6 +219,41 @@
               <li><a href="/usuarios">
                 <span aria-hidden="true" class="se7en-feed"></span>Usuarios</a>
               </li>
+               </li>
+
+                <li class="dropdown current"><a data-toggle="dropdown" class="current" href="#">
+                <span aria-hidden="true" class="hightop-star"></span>Menú<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="">Tipos de Empresa</a>
+                  </li>
+                  <li>
+                    <a href="">Rango de fecha</a>
+
+                  </li>
+                  <li>
+                    <a href="">Municipios</a>
+                  </li>
+                  <li>
+                    <a href="">Temporales</a>
+                  </li>
+                  <li>
+
+                    <a href="">Representantes</a>
+                  </li>
+                  
+                </ul>
+              </li>
+
+
+
+
+
+             
+             </li>
+             </ul>
+             </li>
+
               @endif
             </ul>
           </div>
@@ -241,12 +276,13 @@
         display:block;
         text-align:center;
         background: #620000;
-        position:absolute;
+        position:fixed;
         bottom: 0;
       }
     </style>
     <footer>
-      Todos los derechos Reservador © 2013. | Coordinación de Tecnología y Sistemas | Dirección de Planificación, Presupuesto y Control de Gestión.
+        Desarrollado por la Dirección de Tecnología y Sistemas 2014|vesión 1.0
+        
     </footer>
   </body>
 
