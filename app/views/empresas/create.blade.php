@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Creación de formulario Empresa
+             Formulario Empresa
           </h1>
         </div>
         <!-- DataTables Example -->
@@ -18,8 +18,7 @@
 
               <div class="widget-content padded">
 		        <form action="" method="post" class="form-horizontal">
-		         
-			  		<div class="form-group">
+		         	<div class="form-group">
 			            <label class="control-label col-md-1">Tipo de Empresa</label>
 			            <div class="col-md-2">
 			              <select class="select2able select2-offscreen" tabindex="-1" name="id_tipo_empresa" id="id_tipo_empresa" required>
@@ -241,7 +240,15 @@
 		              		<input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
 			           	</div>
 
-			            <div class="col-md-3">
+			            <div class="col-md-1"></div>
+
+			            <div class="col-md-2">
+			            	<a href="/empresas/socios" class="fancybox fancybox.ajax" id="add-representante">Socios</a>
+			            	<div id="socios-container"></div>
+			            	<div id="form-display-representante" style="display:none">
+			            		<span id="form-display-representante-span"></span>
+			            		<a href="#" id="delete-representante" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>
+			            	</div>
 			          	</div>
 			            <div class="col-md-1">
 			              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">

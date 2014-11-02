@@ -2,7 +2,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Creación de Personas
+            Añadir Representante
           </h1>
         </div>
         <!-- DataTables Example -->

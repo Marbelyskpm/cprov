@@ -5,7 +5,7 @@
       <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
-            Creación de formulario Empresa
+            Eliminar Empresa
           </h1>
         </div>
         <!-- DataTables Example -->
