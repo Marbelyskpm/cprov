@@ -630,8 +630,8 @@
     $(".fancybox").fancybox({
       maxWidth: 700,
       height: 'auto',
+      maxHeight: 500,
       fitToView: false,
-      autoSize: true,
       padding: 15,
       nextEffect: 'fade',
       prevEffect: 'fade',
