@@ -4,6 +4,7 @@
       <div class="widget-content padded">
         <p>
           <em>Empresa {{ $empresa->codigo }}</em>
+          <a href="{{ $route }}/reporte/{{ Crypt::encrypt($empresa->id) }}" style="float:right" target="_blank">Imprimir Reporte</a>
         </p>
         <table class="table table-bordered table-striped editable-form" id="user" style="clear: both">
           <tbody>

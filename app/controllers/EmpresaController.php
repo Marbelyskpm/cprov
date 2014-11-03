@@ -433,5 +433,41 @@ class EmpresaController extends \BaseController {
 
    }
 
+   public function getReporte( $id = '' ){
+
+   		if( $id != '' ):
+			$id = Crypt::decrypt($id);
+			$empresa = Empresas::find($id);
+
+			$empresa->fecha_ingreso = date("d-m-Y", strtotime($empresa->fecha_ingreso));
+			$empresa->fecha_snc = date("d-m-Y", strtotime($empresa->fecha_snc));
+			$empresa->fecha_ince = date("d-m-Y", strtotime($empresa->fecha_ince));
+			$empresa->fecha_patente = date("d-m-Y", strtotime($empresa->fecha_patente));
+			/*
+			$empresa->coling->fecha = date("d-m-Y", strtotime($empresa->coling->fecha));
+			$empresa->seguro->fecha = date("d-m-Y", strtotime($empresa->seguro->fecha));
+			*/
+			include('/mpdf/mpdf.php');
+
+			$html = '<html><body>'
+			. '<img src="/images/etiqueta.png" width="100%" height="auto">'
+            . '<p>Hola Mundo.</p>'
+            . '</body></html>';
+
+            $mpdf=new mPDF();
+			$mpdf->Bookmark('Start of the document');
+			$mpdf->WriteHTML($html);
+			$mpdf->Output();
+
+    
+    		//return mPDF::render($html, 'A4', 'portrait')->show();
+
+		else:
+
+			return Redirect::to($this->route);
+		endif;
+
+   }
+
 
 }
