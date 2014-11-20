@@ -1,12 +1,15 @@
       <!-- End Navigation -->
-      <div class="container-fluid main-content">
+
+      <!--
+     <div class="container-fluid main-content">
         <div class="page-title">
           <h1>
             Añadir Socios
           </h1>
         </div>
-        <!-- DataTables Example -->
-        <div class="row">
+                                                         <!-- DataTables Example -->
+      
+      <!--  <div class="row">
           <div class="col-lg-12">
             <div class="widget-container fluid-height clearfix">
 
@@ -61,7 +64,8 @@
 							    				success: function(data){
 
 						    						$('#socios-seleccionados').append('<div class="col-md-12" id="input-socio"><input type="hidden" name="socios_seleccionados[]" value="' + data.id + '" style="display:none"/><span>' + data.cedula + ' - ' + data.nombre + '</span><!--<a href="#" class="delete-socio" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>--></div>');
-							    					console.log(data);
+							    				
+      <!--	console.log(data);
 							    				},
 							    				error: function(e){
 							    					console.log(e);
@@ -124,7 +128,8 @@
 
     				$('#socios-seleccionados').append('<div class="col-md-12" id="input-socio"><input type="hidden" name="socios_seleccionados[]" value="' + $('#socio-finded').val() + '" style="display:none"/><span>' + $('#socio-cedula').val() + ' - ' + $('#socio-nombre').val() + '</span><!--<a href="#" id="delete-socio" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>--></div>');
 
-					$('#socio-finded').val('');
+				
+      <!--	$('#socio-finded').val('');
 					$('#socio-cedula').val('');
 					$('#socio-nombre').val('');
 					$('#socio-rif').val('');
@@ -152,7 +157,8 @@
 		    				}
 
     						$('#socios-seleccionados').append('<div class="col-md-12" id="input-socio"><input type="hidden" name="socios_seleccionados[]" value="' + data.id + '" style="display:none"/><span>' + data.cedula + ' - ' + data.nombre + '</span><!--<a href="#" class="delete-socio" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>--></div>');
-    						$('#socio-finded').val('');
+    		
+      <!--				$('#socio-finded').val('');
     						$('#socio-cedula').val('');
     						$('#socio-nombre').val('');
     						$('#socio-rif').val('');
@@ -187,7 +193,8 @@
 
     				$('#socios-seleccionados').append('<div class="col-md-12" id="input-socio"><input type="hidden" name="socios_seleccionados[]" value="' + $('#socio-finded').val() + '" style="display:none"/><span>' + $('#socio-cedula').val() + ' - ' + $('#socio-nombre').val() + '</span><!--<a href="#" id="delete-socio" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>--></div>');
 
-    				return false;
+    		
+      <!--		return false;
     			}
     			else{
 	    			var elem = $(this);
@@ -210,7 +217,8 @@
 		    				}
 
     						$('#socios-seleccionados').append('<div class="col-md-12" id="input-socio"><input type="checkbox" name="socios_seleccionados[]" value="' + $('#socio-finded').val() + '" style="display:none"/><span>' + $('#socio-cedula').val() + ' - ' + $('#socio-nombre').val() + '</span><!--<a href="#" class="delete-socio" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>--></div>');
-	    					console.log(data);
+	    	
+      <!--				console.log(data);
 	    				},
 	    				error: function(e){
 	    					console.log(e);

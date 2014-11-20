@@ -69,6 +69,8 @@
 			              <select class="form-control" name="tipo">
 			              	<option value="administrador">Administrador</option>
 			              	<option value="operador">Operador</option>
+			              	<option value="vip">VIP</option>
+
 			              </select>
 			            </div>
 			         </div>

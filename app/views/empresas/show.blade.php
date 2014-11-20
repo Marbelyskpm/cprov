@@ -4,7 +4,7 @@
       <div class="widget-content padded">
         <p>
           <em>Empresa {{ $empresa->codigo }}</em>
-          <a href="{{ $route }}/reporte/{{ Crypt::encrypt($empresa->id) }}" style="float:right" target="_blank">Imprimir Reporte</a>
+          <a href="{{ $route }}/reporte/{{ Crypt::encrypt($empresa->id) }}" style="float:right" target="_blank">Imprimir Certificado</a>
         </p>
         <table class="table table-bordered table-striped editable-form" id="user" style="clear: both">
           <tbody>
@@ -162,7 +162,7 @@
             </tr>
             <tr>
               <td>
-                Número de Seguro
+                IVSS
               </td>
               <td>
                 <a data-original-title="Please, fill address" data-pk="1" data-type="address" href="#" id="address" class="editable editable-click">{{ $empresa->seguro->numero }}</a>
@@ -170,7 +170,7 @@
             </tr>
             <tr>
               <td>
-                Fecha de Seguro
+                Fecha de IVSS
               </td>
               <td>
                 <a data-original-title="Please, fill address" data-pk="1" data-type="address" href="#" id="address" class="editable editable-click">{{ $empresa->seguro->fecha }}</a>
@@ -223,8 +223,8 @@
               </td>
               <td>
                 <a data-original-title="Please, fill address" data-pk="1" data-type="address" href="#" id="address" class="editable editable-click">{{ $empresa->dias_provicional }}</a>
-              </td>
-            </tr>
+              </td>              
+            </tr>            
             @endif
           </tbody>
         </table>

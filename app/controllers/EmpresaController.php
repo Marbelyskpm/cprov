@@ -7,9 +7,36 @@ class EmpresaController extends \BaseController {
 	public function getIndex()
 	{
 		$empresas = Empresas::all();
+		$tipo_empresas = TipoEmpresas::all();
+		$municipios = Municipios::all();
 
 			$array = array(
 			'empresas' => $empresas,
+			'tipo_empresas' => $tipo_empresas,
+			'municipios' => $municipios,
+			'route' => $this->route
+			);
+
+		return View::make('empresas.index')->with($array);
+
+	}
+
+	public function postIndex()
+	{
+
+		$desde = Input::get('desde');
+		$from = Input::get('hasta');
+		$municipio = Input::get('municipio');
+		$
+
+		$empresas = Empresas::all();
+		$tipo_empresas = TipoEmpresas::all();
+		$municipios = Municipios::all();
+
+			$array = array(
+			'empresas' => $empresas,
+			'tipo_empresas' => $tipo_empresas,
+			'municipios' => $municipios,
 			'route' => $this->route
 			);
 
@@ -31,7 +58,18 @@ class EmpresaController extends \BaseController {
 	}
 	public function postCreate(){
 
-		//dd(Input::all());
+		$year = date('Y');
+		$month = date('m');
+		$day = '31';
+
+		if( $month > 6 ):
+			$month = '12';
+		else:
+			$month = '06';
+			$day = '30';
+		endif;
+
+		$fecha_vencimiento = $day.'-'.$month.'-'.$year;
 
 		$empresa = new Empresas();
 		$empresa->codigo = Input::get('codigo');
@@ -48,6 +86,7 @@ class EmpresaController extends \BaseController {
 		$empresa->provisional = Input::get('provisional') != null ? true : false;
 		$empresa->dias_provicional = Input::get('dias_provicional');
 		$empresa->id_tipo_empresa = Input::get('id_tipo_empresa');
+		$empresa->fecha_vencimiento = date("Y-m-d", strtotime($fecha_vencimiento));
 
 		$empresa->save();
 
@@ -69,11 +108,11 @@ class EmpresaController extends \BaseController {
 
 		$empresa->ince()->save($ince);
 
-		$islr = new ISLR();
+		/*$islr = new ISLR();
 		$islr->numero = Input::get('num_islr');
 		$islr->fecha = date("Y-m-d", strtotime(Input::get('fecha_islr')));
 
-		$empresa->islr()->save($islr);
+		$empresa->islr()->save($islr);*/
 
 		$patente = new Patente();
 		$patente->numero = Input::get('num_patente');
@@ -92,6 +131,12 @@ class EmpresaController extends \BaseController {
 		$solmuni->fecha = date("Y-m-d", strtotime(Input::get('fecha_solmuni')));
 
 		$empresa->solmuni()->save($solmuni);
+
+		$solvencialaboral = new SolvenciaLaboral();
+		$solvencialaboral->numero = Input::get('num_solvencialaboral');
+		$solvencialaboral->fecha = date("Y-m-d", strtotime(Input::get('fecha_solvencialaboral')));
+
+		$empresa->solvencialaboral()->save($solvencialaboral);
 
 		$seguro = new SeguroSocial();
 		$seguro->numero = Input::get('num_seguro');
@@ -152,6 +197,19 @@ class EmpresaController extends \BaseController {
 	
 	public function postEdit( $id = '' ){
 
+		$year = date('Y');
+		$month = date('m');
+		$day = '31';
+
+		if( $month > 6 ):
+			$month = '12';
+		else:
+			$month = '06';
+			$day = '30';
+		endif;
+
+		$fecha_vencimiento = $day.'-'.$month.'-'.$year;
+
 		$id = Crypt::decrypt($id);
 		$empresa = Empresas::find($id);
 		$empresa->codigo = Input::get('codigo');
@@ -168,6 +226,7 @@ class EmpresaController extends \BaseController {
 		$empresa->provisional = Input::get('provisional') != null ? true : false;
 		$empresa->dias_provicional = Input::get('dias_provicional');
 		$empresa->id_tipo_empresa = Input::get('id_tipo_empresa');
+		$empresa->fecha_vencimiento = date("Y-m-d", strtotime($fecha_vencimiento));
 
 		$empresa->save();
 
@@ -183,9 +242,9 @@ class EmpresaController extends \BaseController {
 		$empresa->ince->fecha = date("Y-m-d", strtotime(Input::get('fecha_ince')));
 		$empresa->ince->save();
 
-		$empresa->islr->numero = Input::get('num_islr');
+		/*$empresa->islr->numero = Input::get('num_islr');
 		$empresa->islr->fecha = date("Y-m-d", strtotime(Input::get('fecha_islr')));
-		$empresa->islr->save();
+		$empresa->islr->save();*/
 
 		$empresa->patente->numero = Input::get('num_patente');
 		$empresa->patente->fecha = date("Y-m-d", strtotime(Input::get('fecha_patente')));
@@ -198,6 +257,11 @@ class EmpresaController extends \BaseController {
 		$empresa->solmuni->licencia = Input::get('num_solmuni');
 		$empresa->solmuni->fecha = date("Y-m-d", strtotime(Input::get('fecha_solmuni')));
 		$empresa->solmuni->save();
+
+
+		$empresa->solvencialaboral->numero = Input::get('num_solvencialaboral');
+		$empresa->solvencialaboral->fecha = date("Y-m-d", strtotime(Input::get('fecha_solvencialaboral')));
+		$empresa->solvencialaboral->save();
 
 		$empresa->seguro->numero = Input::get('num_seguro');
 		$empresa->seguro->fecha = date("Y-m-d", strtotime(Input::get('fecha_seguro')));
@@ -438,20 +502,103 @@ class EmpresaController extends \BaseController {
    		if( $id != '' ):
 			$id = Crypt::decrypt($id);
 			$empresa = Empresas::find($id);
-
+			$usuarios = User::where('tipo', '=', 'vip')->take(1)->get();
+			$usuarios = $usuarios[0];
 			$empresa->fecha_ingreso = date("d-m-Y", strtotime($empresa->fecha_ingreso));
 			$empresa->fecha_snc = date("d-m-Y", strtotime($empresa->fecha_snc));
 			$empresa->fecha_ince = date("d-m-Y", strtotime($empresa->fecha_ince));
 			$empresa->fecha_patente = date("d-m-Y", strtotime($empresa->fecha_patente));
+			$empresa->fecha_vencimiento = date("d-m-Y", strtotime($empresa->fecha_vencimiento));
+			$fecha = date('d-m-Y', strtotime("$empresa->fecha_ingreso+6 months"));
 			/*
 			$empresa->coling->fecha = date("d-m-Y", strtotime($empresa->coling->fecha));
 			$empresa->seguro->fecha = date("d-m-Y", strtotime($empresa->seguro->fecha));
 			*/
-			include('/mpdf/mpdf.php');
+			include('/mpdf/mpdf.php'); 
 
 			$html = '<html><body>'
-			. '<img src="/images/etiqueta.png" width="100%" height="auto">'
-            . '<p>Hola Mundo.</p>'
+			. '<img src="/images/logo_sistema-1.png" width="12%" height="auto">'
+
+           
+
+            . '<p align="center">
+               CERTIFICADO DE INSCRIPCIÓN EN EL REGISTRO DE ORGANIZACIONES </p>'
+
+            . '<p align="justify">
+
+                Por medio de la presente damos constancia que la empresa '.$empresa->nombre.',representada por '.$empresa->representante->nombre.',
+                cédula de identidad número '.$empresa->representante->cedula.', se encuentra formalmente inscrita
+                en el registro de Organizaciones del Gobierno Bolivariano del Estado Aragua, quedando anotada con el N° '.$empresa->codigo .'
+                de fecha '.$empresa->fecha_ingreso .', actualizada el:'.$empresa->fecha_ingreso .' con el Rif '.$empresa->rif .', Nit '.$empresa->nit .'. </p>'
+            
+            . '<p>Dirección: '.$empresa->direccion .', Municipio: '.$empresa->municipio->nombre .' </p>'
+            . '<p>Telefono: '.$empresa->telefono .' </p>'
+
+                      
+            . '<p align="right">
+                SNC: '.$empresa->snc->numero .  '  Fecha: '.$empresa->snc->fecha .'</p>'     
+            . '<p align="right">
+                INCE: '.$empresa->ince->numero .'  Fecha : '.$empresa->ince->fecha .'</p>'            
+            . '<p align="right" >IVSS: '.$empresa->seguro->numero .' Fecha: '.$empresa->seguro->fecha .' </p>'
+            
+           
+          
+         
+            
+
+
+             .'<p align="center"> '.$usuarios->nombre.' '.$usuarios->apellido.'</p>'
+
+
+             . '<p align="center">     
+
+             SECRETARIA DEL PODER POPULAR PARA LA HACIENDA, ADMINISTRACIÓN Y FINANZAS Decreto N° 2977 de fecha 22-04-2013 publicado en Gaceta oficial Ordinaria del 
+              Estado Aragua de fecha 22 de Abril del año 2013, valido desde  '.$empresa->fecha_ingreso.' hasta el '.$empresa->fecha_vencimiento.'  </p>'
+
+
+            . '<img src="/images/linea.png" width="100%" height="5%">'
+
+       
+          
+             . '<img src="/images/logo_sistema-1.png" width="12%" height="auto">'
+
+           
+
+            . '<p align="center">
+             CERTIFICADO DE INSCRIPCIÓN EN EL REGISTRO DE ORGANIZACIONES </p>'
+
+            . '<p align="justify">
+
+            Por medio de la presente damos constancia que la empresa '.$empresa->nombre.',representada por '.$empresa->representante->nombre.',
+
+                cédula de identidad número '.$empresa->representante->cedula.', se encuentra formalmente inscrita
+                en el registro de Organizaciones del Gobierno Bolivariano del Estado Aragua, quedando anotada con el N° '.$empresa->codigo .'
+                de fecha '.$empresa->fecha_ingreso .', actualizada el:'.$empresa->fecha_ingreso .' con el Rif '.$empresa->rif .', Nit '.$empresa->nit .'. </p>'
+            
+            . '<p>Dirección: '.$empresa->direccion .', Municipio: '.$empresa->municipio->nombre .' </p>'
+            
+            . '<p>Telefono: '.$empresa->telefono .' </p>'
+                      
+            . '<p align="right">
+                SNC: '.$empresa->snc->numero .  '  Fecha: '.$empresa->snc->fecha .' </p>'
+           
+            . '<p align="right">
+                INCE: '.$empresa->ince->numero .'  Fecha : '.$empresa->ince->fecha .' </p>'
+            
+            . '<p align="right" >IVSS: '.$empresa->seguro->numero .' Fecha: '.$empresa->seguro->fecha .' </p>'
+            
+           
+            
+            .'<p align="center"> '.$usuarios->nombre.' '.$usuarios->apellido.'</p>'
+
+
+             . '<p align="center">     
+
+             SECRETARIA DEL PODER POPULAR PARA LA HACIENDA, ADMINISTRACIÓN Y FINANZAS Decreto N° 2977 de fecha 22-04-2013 publicado en Gaceta oficial Ordinaria del 
+              Estado Aragua de fecha 22 de Abril del año 2013, valido desde  '.$empresa->fecha_ingreso.' hasta el '.$fecha.' </p>'
+
+              
+           
             . '</body></html>';
 
             $mpdf=new mPDF();
@@ -466,6 +613,125 @@ class EmpresaController extends \BaseController {
 
 			return Redirect::to($this->route);
 		endif;
+
+   }
+
+   public function postReporte(){
+
+		$empresas = null;
+
+   		if(Input::get('busqueda') == '' ):
+
+   			$empresas = Empresas::all();
+
+   		elseif(Input::get('busqueda') == 'intervalo'):
+
+   			$empresas = Empresas::whereBetween( 'created_at', array( Input::get('desde'), Input::get('hasta') ) );
+
+   		elseif(Input::get('busqueda') == 'municipio'):
+
+   			$municipio = Municipios::where('nombre','=',Input::get('municipio'))->take(1)->get();
+
+   		endif;
+
+   	$args = array(
+   		'empresas' => $empresas
+   		);
+
+    return PDF::load( View::make('pdfs.lista_empresas', $args) , 'A4', 'portrait')->show();
+
+   }
+
+   public function postReporte2(){
+
+   		$empresas = null;
+
+   		if(Input::get('busqueda') == '' ):
+
+   			$empresas = Empresas::all();
+
+   		elseif(Input::get('busqueda') == 'intervalo'):
+
+   			$empresas = Empresas::whereBetween( 'created_at', array( Input::get('desde'), Input::get('hasta') ) );
+
+   		elseif(Input::get('busqueda') == 'municipio'):
+
+   			$municipio = Municipios::where('nombre','=',Input::get('municipio'))->take(1)->get();
+
+   		endif;
+
+    	include('/mpdf/mpdf.php'); 
+
+			$html = '<img src="/images/etiqueta.png" width="100%" height="45">'
+      .'<div class="container-fluid main-content">'
+        .'<div class="page-title">'
+		.'<h1>'
+            .'Empresas'
+		.'</h1>'
+        .'</div>'
+        	.'<table><tbody>'
+              	.'<tr style="display:block">'
+                    .'<th style="padding:10px; background-color: #999;border:1px;margin:1em;">'
+                      .'Codigo'
+                    .'</th>'
+                    .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Nombre'
+                    .'</th>'
+                     .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Representante'
+                    .'</th>'
+                     .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Direccion'
+                    .'</th>'
+                    .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Rif'
+                    .'</th>'
+                    .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Telefono'
+                    .'</th>'
+                    .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Creado el '
+                    .'</th>'
+                    .'<th style="padding:1em; background-color: #999;border:1px;margin:1em;">'
+                      .'Actualizado el'
+                    .'</th>'
+                .'</tr>';
+
+        foreach($empresas as $empresa):
+
+        	$html .= '<tr>'
+                      .'<td>'
+                        . $empresa->codigo 
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->nombre
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->representante->nombre
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->direccion 
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->rif
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->telefono
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->created_at
+                      .'</td>'
+                      .'<td class="hidden-xs">'
+                        .$empresa->updated_at 
+                      .'</td>'
+                    .'</tr>';
+        endforeach;
+                  
+        $html .'</tbody>';
+
+            $mpdf=new mPDF();
+			$mpdf->WriteHTML($html);
+			$mpdf->Output();
 
    }
 

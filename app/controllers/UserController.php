@@ -2,12 +2,15 @@
 
 class UserController extends \BaseController {
 
+	protected $route = '/usuarios';
+
 	public function getIndex(){
 
 		$modelo = User::all();
 
 		$array = array(
-			'usuarios' => $modelo
+			'usuarios' => $modelo,
+			'route' => $this->route
 			);
 
 		return View::make('usuarios.index')->with($array);
@@ -25,7 +28,7 @@ class UserController extends \BaseController {
 			$usuario = new User();
 			$usuario->nombre = Input::get('nombre');
 			$usuario->apellido = Input::get('apellido');
-			$usuario->usuario = Input::get('username');
+			$usuario->username = Input::get('username');
 			$usuario->password = Input::get('password');
 			$usuario->tipo = Input::get('tipo');
 			$usuario->save();
@@ -44,11 +47,106 @@ class UserController extends \BaseController {
 		endif;
 
 	}
-	public function getEdit(){
+	
+	public function getEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$usuario = User::find($id);
+
+			$array = array(
+				'usuario' => $usuario,
+				'route' => $this->route
+				);
+
+			return View::make('usuarios.edit')->with($array);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
 
 	}
-	public function getDelete(){
+
+	
+	public function postEdit( $id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$usuario = User::find($id);
+
+			if( Input::get('password') != '' ):
+				
+				if( Input::get('password') == Input::get('password_2')):
+				
+					$usuario->password = Hash::make(Input::get('password'));
+				
+				else:
+
+					$array = array(
+						'error' => 'clave_error',
+						'route' => $this->route,
+						'usuario' => $usuario
+						);
+		 
+					return View::make('usuarios.edit')->with($array);
+				
+				endif;
+			
+			endif;
+
+			$usuario->nombre = Input::get('nombre');
+			$usuario->apellido = Input::get('apellido');
+
+			$usuario->save();
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
 
 	}
 
+	public function getDelete( $id ){
+
+		if( $id != '' ):
+			$id = Crypt::decrypt($id);
+			$usuario = User::find($id);
+
+			$array = array(
+				'usuario' => $usuario,
+				'route' => $this->route
+				);	
+
+			return View::make('usuarios.delete')->with( $array );
+
+		else:
+
+			return Redirect::to($this->route);
+		endif;
+	}
+   
+   public function postDelete($id = '' ){
+
+   		if( $id != '' ):
+
+			$id = Crypt::decrypt($id);
+			$usuario = User::destroy($id);
+
+			return Redirect::to($this->route);
+
+		else:
+
+			return Redirect::to($this->route);
+
+		endif;
+
+
+   }
 }

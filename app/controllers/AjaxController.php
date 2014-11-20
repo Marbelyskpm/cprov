@@ -8,6 +8,8 @@ class AjaxController extends \BaseController {
 
 		$ceros = '00000';
 
+		$year = date('y');
+
 		$contador_de_ceros = 0;
 
 		$empresas = DB::table('empresas')
@@ -17,7 +19,7 @@ class AjaxController extends \BaseController {
 
         if($empresas == null ):
 
-			return $tipo_empresa->prefijo.'000001';
+			return $tipo_empresa->prefijo.$year.'000001';
 
         else:
 
@@ -36,7 +38,7 @@ class AjaxController extends \BaseController {
 
 			$valor = substr('00000', 0, 5-$contador_de_ceros);
 
-			return $tipo_empresa->prefijo.$valor.($contador_de_empresas+1);
+			return $tipo_empresa->prefijo.$year.$valor.($contador_de_empresas+1);
 
         endif;
 

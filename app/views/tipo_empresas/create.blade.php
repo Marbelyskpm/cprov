@@ -27,7 +27,7 @@
               <div class="form-group">
                   <label class="control-label col-md-2">Prefijo</label>
                   <div class="col-md-7">
-                    <input class="form-control" placeholder="Escriba el tipo de empresa" name="prefijo" type="text" maxlength="1" />
+                    <input class="form-control" placeholder="Escriba el tipo de empresa" name="prefijo" type="text" maxlength="2" />
                   </div>
               </div>
 					<div class="form-group">

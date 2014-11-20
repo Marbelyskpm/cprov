@@ -142,9 +142,14 @@
 			              <input class="form-control" placeholder="Escriba el numero de INCE" name="num_ince" type="text" required value="{{ $empresa->ince->numero }}">
 			            </div>
 			        
-			            <label class="control-label col-md-1">Número ISLR</label>
+			            <!-- <label class="control-label col-md-1">Número ISLR</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el numero de ISLR " name="num_islr" type="text" required value="{{ $empresa->islr->numero }}">
+			            </div> -->
+
+			            <label class="control-label col-md-1"> Solvencia Laboral</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de solvencia laboral " name="num_solvencialaboral" type="text" required value="{{ $empresa->solvencialaboral->numero }}">
 			            </div>
 		
 			        </div>
@@ -172,12 +177,19 @@
 			              </div>
 			            </div>
 			            
-			            <label class="control-label col-md-1">Fecha de ISLR</label>
+			            <!-- <label class="control-label col-md-1">Fecha de ISLR</label>
 			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_islr" required value="{{ date('d-m-Y', strtotime($empresa->islr->fecha)) }}"><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
-			          	</div>
+			              </div>-->
+
+			            <label class="control-label col-md-1">Fecha de Solvencia Laboral</label>
+			              <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_solvencialaboral" required value="{{ date('d-m-Y', strtotime($empresa->solvencialaboral->fecha)) }}"><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			           	  </div> 
 
 					</div>
 

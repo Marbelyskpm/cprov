@@ -129,11 +129,16 @@
 			              <input class="form-control" placeholder="Escriba el numero de INCE" name="num_ince" type="text" required>
 			            </div>
 			        
+			            <label class="control-label col-md-1">Número Solvencia Laboral</label>
+			            <div class="col-md-2">
+			              <input class="form-control" placeholder="Escriba el numero de solvencia laboral " name="num_solvencialaboral" type="text" required>
+			            </div>
+                         <!--
 			            <label class="control-label col-md-1">Número ISLR</label>
 			            <div class="col-md-2">
-			              <input class="form-control" placeholder="Escriba el numero de ISLR " name="num_islr" type="text" required>
+			              <input class="form-control" placeholder="Escriba el numero de solvencia laboral " name="num_islr" type="text" required>
 			            </div>
-		
+		                -->
 			        </div>
 
 			        <div class="form-group">
@@ -159,12 +164,20 @@
 			              </div>
 			            </div>
 			            
-			            <label class="control-label col-md-1">Fecha de ISLR</label>
+			            <label class="control-label col-md-1">Fecha de Solvencia Laboral</label>
+			            <div class="col-md-2">
+			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
+			                <input class="form-control" type="text" name="fecha_solvencialaboral" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
+			              </div>
+			          	</div>
+                         <!--
+			          	<label class="control-label col-md-1">Fecha de ISLR</label>
 			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_islr" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
 			              </div>
 			          	</div>
+                         -->
 
 					</div>
 
@@ -186,7 +199,7 @@
 			              <input class="form-control" placeholder="Escriba el numero de SOLMUNI" name="num_solmuni" type="text" required>
 			            </div>
 
-	            		<label class="control-label col-md-1">Número de Seguro</label>
+	            		<label class="control-label col-md-1">IVSS</label>
 			            <div class="col-md-2">
 			              <input class="form-control" placeholder="Escriba el numero de Seguro" name="num_seguro" type="text" required>
 			            </div>
@@ -216,7 +229,7 @@
 			              </div>
 			          	</div>
 
-						<label class="control-label col-md-1">Fecha de Seguro</label>
+						<label class="control-label col-md-1">Fecha de IVSS</label>
 			            <div class="col-md-2">
 			              <div class="input-group date datepicker" data-date-autoclose="true" data-date-format="dd-mm-yyyy">
 			                <input class="form-control" type="text" name="fecha_seguro" required><span class="input-group-addon"><i class="fa icon-calendar"></i></span>
@@ -240,19 +253,23 @@
 		              		<input class="form-control" placeholder="Dias provisionales" name="dias_provicional" type="text">
 			           	</div>
 
-			            <div class="col-md-1"></div>
-
-			            <div class="col-md-2">
-			            	<a href="/empresas/socios" class="fancybox fancybox.ajax" id="add-representante">Socios</a>
-			            	<div id="socios-container"></div>
-			            	<div id="form-display-representante" style="display:none">
-			            		<span id="form-display-representante-span"></span>
-			            		<a href="#" id="delete-representante" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>
-			            	</div>
-			          	</div>
-			            <div class="col-md-1">
-			              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">
-			          	</div> 
+			           
+      					<!-- <div class="col-md-1"></div>
+      					
+      								            <div class="col-md-2">
+      								            	<a href="/empresas/socios" class="fancybox fancybox.ajax" id="add-representante">Socios</a>
+      								            	<div id="socios-container"></div>
+      								            	<div id="form-display-representante" style="display:none">
+      								            		<span id="form-display-representante-span"></span>
+      								            		<a href="#" id="delete-representante" style="margin-left: 5px;padding: 1px 5px;background-color: #620000; color: #FFFFFF;">x</a>
+      								            	</div>
+      								          	</div>
+      								             -->
+				            <div class="col-md-2">
+				          	</div> 
+				             <div class="col-md-1">
+				              <input class="form-control" placeholder="" style="padding:0px" value="Enviar" type="submit">
+				          	</div> 
 					</div>
 		        </form>
 		      </div>
@@ -283,6 +300,7 @@
 				openEffect	: 'none',
 				closeEffect	: 'none'
 			});
+
         	$('#id_tipo_empresa').change(function(e){
         		var elem = $(this);
         		console.log("Cambio a: " + elem.val());
@@ -293,7 +311,7 @@
         			$('#id_codigo').val(data);
         			console.log(data);
         		});
-        	})
+        	});
         });
 
         </script>

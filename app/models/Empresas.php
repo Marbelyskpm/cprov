@@ -80,7 +80,13 @@ class Empresas extends \Eloquent {
 
     public function seguro(){
 
-    	return $this->hasOne('SeguroSocial', 'id_empresa', 'id');
+        return $this->hasOne('SeguroSocial', 'id_empresa', 'id');
+
+    }
+
+    public function solvencialaboral(){
+
+        return $this->hasOne('SolvenciaLaboral', 'id_empresa', 'id');
 
     }
     

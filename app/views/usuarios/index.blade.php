@@ -70,8 +70,8 @@
                       <td class="actions">
                         <div class="action-buttons">
                         @if($usuario->tipo != 'administrador')
-                          <a class="table-actions" href="#"><i class="icon-pencil"></i></a>
-                          <a class="table-actions" href="#"><i class="icon-trash"></i></a>
+                          <a class="table-actions" href="{{ $route }}/edit/{{ Crypt::encrypt($usuario->id) }}"><i class="icon-pencil"></i></a>
+                          <a class="table-actions" href="{{ $route }}/delete/{{ Crypt::encrypt($usuario->id) }}"><i class="icon-trash"></i></a>
                         @else
                           <em style="font-size:8pt">Administrador</em>
                         @endif

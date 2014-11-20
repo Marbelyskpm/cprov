@@ -30,6 +30,7 @@ class CreateEmpresas extends Migration {
             $table->integer('dias_provicional');
             $table->integer('id_tipo_empresa');
             $table->timestamps();
+            $table->date('fecha_vencimiento');
             $table->softDeletes();
 		});
 	}
