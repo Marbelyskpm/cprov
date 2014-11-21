@@ -197,63 +197,26 @@
         <div class="container-fluid main-nav clearfix">
           <div class="nav-collapse">
             <ul class="nav">
-              <li>
-                <a href="/"><span aria-hidden="true" class="se7en-home"></span>Escritorio</a>
-              </li>
               <li><a href="/empresas">
-                <span aria-hidden="true" class="se7en-feed"></span>Empresas</a>
+                <span aria-hidden="true" class="icon-suitcase"></span>Empresas</a>
               </li>
               <li><a href="/personas">
-                <span aria-hidden="true" class="icon-user"></span>Personas</a>
+                <span aria-hidden="true" class="icon-male"></span>Personas</a>
               </li>
               @if(Auth::check() && Auth::user()->tipo=='administrador')
               <li><a href="/municipios">
-                <span aria-hidden="true" class="se7en-feed"></span>Municipios</a>
+                <span aria-hidden="true" class="icon-map-marker"></span>Municipios</a>
               </li>
               <li><a href="/actividades">
-                <span aria-hidden="true" class="se7en-feed"></span>Actividades</a>
+                <span aria-hidden="true" class="icon-gears"></span>Actividades</a>
               </li>
               <li><a href="/tipoempresas">
-                <span aria-hidden="true" class="se7en-feed"></span>Tipos de Empresas</a>
+                <span aria-hidden="true" class="icon-list-ul"></span>Tipos de Empresas</a>
               </li>
               <li><a href="/usuarios">
-                <span aria-hidden="true" class="se7en-feed"></span>Usuarios</a>
+                <span aria-hidden="true" class="icon-user"></span>Usuarios</a>
               </li>
                </li>
-
-                <li class="dropdown current"><a data-toggle="dropdown" class="current" href="#">
-                <span aria-hidden="true" class="hightop-star"></span>Menú<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="">Tipos de Empresa</a>
-                  </li>
-                  <li>
-                    <a href="">Rango de fecha</a>
-
-                  </li>
-                  <li>
-                    <a href="">Municipios</a>
-                  </li>
-                  <li>
-                    <a href="">Temporales</a>
-                  </li>
-                  <li>
-
-                    <a href="">Representantes</a>
-                  </li>
-                  
-                </ul>
-              </li>
-
-
-
-
-
-             
-             </li>
-             </ul>
-             </li>
-
               @endif
             </ul>
           </div>

@@ -9,11 +9,18 @@ class EmpresaController extends \BaseController {
 		$empresas = Empresas::all();
 		$tipo_empresas = TipoEmpresas::all();
 		$municipios = Municipios::all();
+		$filtro = array(
+			'desde' => '',
+			'hasta' => '',
+			'municipio' => '',
+			'tipo_empresa' => ''
+			);
 
 			$array = array(
 			'empresas' => $empresas,
 			'tipo_empresas' => $tipo_empresas,
 			'municipios' => $municipios,
+			'filtro' => $filtro,
 			'route' => $this->route
 			);
 
@@ -24,20 +31,80 @@ class EmpresaController extends \BaseController {
 	public function postIndex()
 	{
 
-		$desde = Input::get('desde');
-		$from = Input::get('hasta');
+		$desde = Input::get('desde') != '' ? date("Y-m-d", strtotime(Input::get('desde'))) : '';
+		$hasta = Input::get('hasta') != '' ? date("Y-m-d", strtotime(Input::get('hasta'))) : '';
 		$municipio = Input::get('municipio');
-		$
+		$tipo_empresa = Input::get('tipo_empresa');
 
-		$empresas = Empresas::all();
+		$empresas = null;
+
+		$date_filter = 'created_at';
+
+		if( ( $desde != '' && $hasta != '' ) && ( $municipio == 0 && $tipo_empresa == 0 ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->get();
+
+		elseif( ( $municipio != 0 ) && ( $tipo_empresa == 0 && $desde == '' && $hasta == '' ) ):
+
+			$empresas = Empresas::where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $tipo_empresa != 0 ) && ( $municipio == 0 && $desde == '' && $hasta == '' ) ):
+
+			$empresas = Empresas::where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		elseif( ( $desde != '' && $hasta != '' && $municipio != 0 ) && ( $tipo_empresa == 0 ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $desde != '' && $hasta != '' && $tipo_empresa != 0 ) && ( $municipio == 0 ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		elseif( ( $municipio != 0 && $tipo_empresa != 0 ) && ( $desde == '' && $hasta == '' ) ):
+
+			$empresas = Empresas::where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $municipio != 0 && $tipo_empresa != 0 ) && ( $desde != '' && $hasta != '' ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde)
+							->where( 'updated_at', '<', $hasta)
+							->where( 'id_municipio', '=', $municipio )
+							->where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		else:
+
+			$empresas = Empresas::all();
+
+		endif;
+
 		$tipo_empresas = TipoEmpresas::all();
 		$municipios = Municipios::all();
+		$filtro = array(
+			'desde' => $desde,
+			'hasta' => $hasta,
+			'municipio' => $municipio,
+			'tipo_empresa' => $tipo_empresa
+			);
 
-			$array = array(
+		$array = array(
 			'empresas' => $empresas,
 			'tipo_empresas' => $tipo_empresas,
 			'municipios' => $municipios,
-			'route' => $this->route
+			'route' => $this->route,
+			'filtro' => $filtro
 			);
 
 		return View::make('empresas.index')->with($array);
@@ -620,19 +687,67 @@ class EmpresaController extends \BaseController {
 
 		$empresas = null;
 
-   		if(Input::get('busqueda') == '' ):
+		$desde = Input::get('desde') != '' ? date("Y-m-d", strtotime(Input::get('desde'))) : '';
+		$hasta = Input::get('hasta') != '' ? date("Y-m-d", strtotime(Input::get('hasta'))) : '';
+		$municipio = Input::get('municipio');
+		$tipo_empresa = Input::get('tipo_empresa');
 
-   			$empresas = Empresas::all();
+		$empresas = null;
 
-   		elseif(Input::get('busqueda') == 'intervalo'):
+		$date_filter = 'created_at';
 
-   			$empresas = Empresas::whereBetween( 'created_at', array( Input::get('desde'), Input::get('hasta') ) );
+		if( ( $desde != '' && $hasta != '' ) && ( $municipio == 0 && $tipo_empresa == 0 ) ):
 
-   		elseif(Input::get('busqueda') == 'municipio'):
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->get();
 
-   			$municipio = Municipios::where('nombre','=',Input::get('municipio'))->take(1)->get();
+		elseif( ( $municipio != 0 ) && ( $tipo_empresa == 0 && $desde == '' && $hasta == '' ) ):
 
-   		endif;
+			$empresas = Empresas::where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $tipo_empresa != 0 ) && ( $municipio == 0 && $desde == '' && $hasta == '' ) ):
+
+			$empresas = Empresas::where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		elseif( ( $desde != '' && $hasta != '' && $municipio != 0 ) && ( $tipo_empresa == 0 ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $desde != '' && $hasta != '' && $tipo_empresa != 0 ) && ( $municipio == 0 ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde )
+							->where( $date_filter, '<', $hasta )
+							->where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		elseif( ( $municipio != 0 && $tipo_empresa != 0 ) && ( $desde == '' && $hasta == '' ) ):
+
+			$empresas = Empresas::where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->where( 'id_municipio', '=', $municipio )
+							->get();
+
+		elseif( ( $municipio != 0 && $tipo_empresa != 0 ) && ( $desde != '' && $hasta != '' ) ):
+
+			$empresas = Empresas::where( $date_filter, '>', $desde)
+							->where( 'updated_at', '<', $hasta)
+							->where( 'id_municipio', '=', $municipio )
+							->where( 'id_tipo_empresa', '=', $tipo_empresa )
+							->get();
+
+		else:
+
+			$empresas = Empresas::all();
+
+		endif;
+
+		$tipo_empresas = TipoEmpresas::all();
+		$municipios = Municipios::all();
 
    	$args = array(
    		'empresas' => $empresas

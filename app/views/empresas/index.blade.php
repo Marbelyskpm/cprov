@@ -15,40 +15,60 @@
             <div class="widget-container fluid-height clearfix">
               <div class="heading">
                 <a href="{{ $route }}/create"><i class="icon-user"></i>Añadir Nueva Empresa</a>
-                <form action="{{ $route }}" target="_blank" method="post" style="float:right;background-color:#EEEEEE;padding:1em;margin:.5em;border-radius:5px;width:100%">
-                  <div class="form-group" style="display:block">
+                <div class="form-group" style="float:right;background-color:#EEEEEE;padding:1em;margin:.5em;border-radius:5px;display:inline-block">
+                  <form action="{{ $route }}" method="post" >
                     <label class="control-label col-md-1">Fecha de Creación</label>
-                    <div class="col-sm-2">
-                      <input class="form-control" data-date-autoclose="true" data-date-format="dd-mm-yyyy" id="dpd1" placeholder="Desde" type="text" value="{{ isset( $desde ) ? $desde : '' }}">
+                    <div class="col-sm-1">
+                      <input class="form-control" data-date-autoclose="true" data-date-format="dd-mm-yyyy" id="dpd1" placeholder="Desde" name="desde" type="text" value="{{ isset( $filtro['desde'] ) ? $filtro['desde'] : '' }}">
                     </div>
-                    <div class="col-sm-2">
-                      <input class="form-control" data-date-autoclose="true" data-date-format="dd-mm-yyyy" id="dpd2" placeholder="Hasta" type="text" value="{{ isset( $hasta ) ? $hasta : '' }}">
+                    <div class="col-sm-1">
+                      <input class="form-control" data-date-autoclose="true" data-date-format="dd-mm-yyyy" id="dpd2" placeholder="Hasta" name="hasta" type="text" value="{{ isset( $filtro['hasta'] ) ? $filtro['hasta'] : '' }}">
                     </div>
                     <label class="control-label col-md-1">Municipio</label>
                     <div class="col-sm-2">
                       <select class="form-control" name="municipio">
+                          <option value="0"> -- NINGUNO -- </option>
                         @foreach( $municipios as $municipio )
-                          <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                          @if( $municipio->id == $filtro['municipio'] )
+                            <option value="{{ $municipio->id }}" selected>{{ $municipio->nombre }}</option>
+                          @else
+                            <option value="{{ $municipio->id }}">{{ $municipio->nombre }}</option>
+                          @endif
                         @endforeach
                       </select>
                     </div>
                     <label class="control-label col-md-1">Tipo de Empresa</label>
                     <div class="col-sm-2">
                       <select class="form-control" name="tipo_empresa">
+                          <option value="0"> -- NINGUNO -- </option>
                         @foreach( $tipo_empresas as $tipo_empresa )
-                          <option value="{{ $tipo_empresa->id }}">{{ $tipo_empresa->descripcion }}</option>
+                          @if( $tipo_empresa->id == $filtro['tipo_empresa'] )
+                            <option value="{{ $tipo_empresa->id }}" selected>{{ $tipo_empresa->descripcion }}</option>
+                          @else
+                            <option value="{{ $tipo_empresa->id }}">{{ $tipo_empresa->descripcion }}</option>
+                          @endif
                         @endforeach
                       </select>
                     </div>
                     <div class="col-sm-1">
-                      <button type="submit" class="btn btn-info"><i class="fa fa-cloud-download"></i>Reporte</button>
+                      <button type="submit" class="btn btn-info"><i class="icon-user"></i>Filtrar</button>
                     </div>
-                  </div>
+                  </form>
+                  <form action="{{ $route }}/reporte" target="_blank" style="display:inline-block" method="post">
+                    <div class="col-sm-1">
+                      <input type="hidden" name="desde" value="{{ isset( $filtro['desde'] ) ? $filtro['desde'] : '' }}"/>
+                      <input type="hidden" name="hasta" value="{{ isset( $filtro['hasta'] ) ? $filtro['hasta'] : '' }}"/>
+                      <input type="hidden" name="municipio" value="{{ isset( $filtro['municipio'] ) ? $filtro['municipio'] : '' }}"/>
+                      <input type="hidden" name="tipo_empresa" value="{{ isset( $filtro['tipo_empresa'] ) ? $filtro['tipo_empresa'] : '' }}"/>
+                      <button type="submit" class="btn btn-info"><i class="icon-cloud-download"></i>Reporte</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
                   <!-- <input type="hidden" name="busqueda" value="{{ isset( $busqueda ) ? $busqueda : '' }}"/>
                   <input type="hidden" name="desde" value="{{ isset( $desde ) ? $desde : '' }}"/>
                   <input type="hidden" name="hasta" value="{{ isset( $hasta ) ? $hasta : '' }}"/>
                   <input type="hidden" name="municipio" value="{{ isset( $municipio ) ? $municipio : '' }}"/> -->
-                </form>
                 <!-- <form action="/busqueda">
                   <input type="hidden" name="type" value="intervalo_fecha"/>
                   <div class="form-group">
